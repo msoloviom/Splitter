@@ -16,13 +16,13 @@ contract Splitter  {
     function splitTransfer(address _payee1,  address _payee2) payable public returns (bool success) {
         require(msg.value > 0);
         require(_payee1 != msg.sender);
-	require(_payee2 != msg.sender);
+	    require(_payee2 != msg.sender);
         require(_payee1 != 0);
         require(_payee2 != 0);
         
-        uint halfOfTransafer = msg.value/2;
-        balanceOf[_payee1]+= halfOfTransafer;
-        balanceOf[_payee2]+= msg.value - halfOfTransafer;
+        uint halfOfTransfer = msg.value/2;
+        balanceOf[_payee1]+= halfOfTransfer;
+        balanceOf[_payee2]+= msg.value - halfOfTransfer;
         
         emit LogSplitTransfer(msg.sender, _payee1, _payee2, msg.value);
         return true;
